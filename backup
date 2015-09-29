@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# This is going to back up everything and keep it there
+rsync -a --exclude '.Trash-1000*' ~/Desktop/ "/media/removable/USB Drive/backup-all/Desktop"
+rsync -a --exclude '.Trash-1000*' ~/Downloads/ "/media/removable/USB Drive/backup-all/Downloads"
+rsync -a --exclude '.Trash-1000*' ~/scripts/ "/media/removable/USB Drive/backup-all/scripts"
+rsync -a --exclude '.Trash-1000*' ~/TEMP/ "/media/removable/USB Drive/backup-all/TEMP"
+rsync -a --exclude '.Trash-1000*' ~/.bash_history "/media/removable/USB Drive/backup-all/bash_history.txt"
+rsync -a --exclude '.Trash-1000*' ~/.bashrc "/media/removable/USB Drive/backup-all/bashrc.txt"
+
+#This is a copy that updates as local files are deleted
+rm -rf "/media/removable/USB Drive/backup-incremental/"
+sleep 10
+mkdir "/media/removable/USB Drive/backup-incremental/"
+rsync -a --exclude '.Trash-1000*' ~/Desktop/ "/media/removable/USB Drive/backup-incremental/Desktop"
+rsync -a --exclude '.Trash-1000*' ~/Downloads/ "/media/removable/USB Drive/backup-incremental/Downloads"
+rsync -a --exclude '.Trash-1000*' ~/scripts/ "/media/removable/USB Drive/backup-incremental/scripts"
+rsync -a --exclude '.Trash-1000*' ~/TEMP/ "/media/removable/USB Drive/backup-incremental/TEMP"
+rsync -a --exclude '.Trash-1000*' ~/.bash_history "/media/removable/USB Drive/backup-incremental/bash_history.txt"
+rsync -a --exclude '.Trash-1000*' ~/.bashrc "/media/removable/USB Drive/backup-incremental/bashrc.txt"
